@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<projects xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+
+          xsi:noNamespaceSchemaLocation="project-schema.xsd">
+
+  <project name="gcam53solver">
+
+    <vars>
+
+      <var name="startYear">2015</var>
+
+      <var name="endYear">2050</var>
+
+      <var name="years" eval="1">{startYear}-{endYear}</var>
+
+    </vars>
+	<scenariosFile name="scenarios.xml"/>
+    <steps>
+
+
+      <step name="setup" runFor="baseline">
+
+        @setup -b {baseline} -g {scenarioGroup} -S {scenarioSubdir} -w {scenarioDir}
+
+        -p {endYear} -y {years}
+
+      </step>
+
+      <step name="gcam"  runFor="baseline">@gcam -s {baseline} -S {projectXmlDir} </step>
+
+      <step name="query" runFor="baseline">
+
+        @query -o {batchDir} -w {scenarioDir} -s {scenario} -q "{queryXmlFile}"
+
+      </step>
+
+
+
+      <step name="setup" runFor="policy">
+
+            @setup -b {baseline} -s {scenario} -g {scenarioGroup} -S {scenarioSubdir}
+
+            -w {scenarioDir} -p {endYear} -y {years}
+
+      </step>
+
+      <step name="gcam"  runFor="policy">@gcam -s {scenario} -S {projectXmlDir} </step>
+
+      <step name="query" runFor="policy">
+
+        @query -o {batchDir} -w {scenarioDir} -s {scenario} -q "{queryXmlFile}"
+
+      </step>
+ 
+
+    </steps>
+ 
+
+    <queries varName="queryXmlFile">
+
+      <query name="nonCO2_emissions_by_sector" states='withUSA'/>  
+      <query name="CO2_emissions_by_region" states='withGlobal'/>  
+      <query name="CO2_prices" states='withGlobal'/>        
+  		<query name="supply_of_all_markets" states='withGlobal'/> 
+  		<query name="demand_of_all_markets" states='withGlobal'/> 
+    </queries>
+
+
+
+  </project>
+
+</projects>
