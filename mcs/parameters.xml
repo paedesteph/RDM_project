@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ParameterList xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="/Users/rjp/github/pygcam/pygcam/mcs/etc/parameter-schema.xsd">
+	<InputFile name="../local-xml/base/mcsValues.xml">
+		<Parameter name="population">
+			<Query>//value[@name="population"]</Query>
+			<Description>x</Description>
+			<Distribution apply="direct">
+				<Sequence values="2, 5"/>
+			</Distribution>
+		</Parameter>
+		
+		<Parameter name="dds">
+			<Query>//value[@name="dds"]</Query>
+			<Description>x</Description>
+			<Distribution apply="direct">
+				<Sequence values="1, 2"/>
+				<!-- A2, constant -->
+			</Distribution>
+		</Parameter>
+		
+		<Parameter name="cons_dem">
+			<Query>//value[@name="cons_dem"]</Query>
+			<Description>x</Description>
+			<Distribution apply="direct">
+				<Sequence values="1, 2"/>
+				<!-- ref, high -->
+			</Distribution>
+		</Parameter>
+		
+		<Parameter name="ccs">
+			<Query>//value[@name="ccs"]</Query>
+			<Description>x</Description>
+			<Distribution apply="direct">
+				<Sequence values="1, 2"/>
+				<!-- ref, no -->
+			</Distribution>
+		</Parameter>
+		
+		<Parameter name="re">
+			<Query>//value[@name="re"]</Query>
+			<Description>x</Description>
+			<Distribution apply="direct">
+				<Sequence values="1, 2"/>
+				<!-- ref, adv -->
+			</Distribution>
+		</Parameter>
+		
+		<Parameter name="bev">
+			<Query>//value[@name="bev"]</Query>
+			<Description>x</Description>
+			<Distribution apply="direct">
+				<Sequence values="1, 2"/>
+				<!-- ref, adv -->
+			</Distribution>
+		</Parameter>
+		
+		<Parameter name="nuc_ret">
+			<Query>//value[@name="nuc_ret"]</Query>
+			<Description>x</Description>
+			<Distribution apply="direct">
+				<Sequence values="1, 2"/>
+				<!-- ref, fast -->
+			</Distribution>
+		</Parameter>
+	</InputFile>
+</ParameterList>
