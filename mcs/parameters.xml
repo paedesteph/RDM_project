@@ -4,7 +4,7 @@
 		<Parameter name="population">
 			<Query>//value[@name="population"]</Query>
 			<Description>x</Description>
-			<Distribution apply="direct">
+			<Distribution>
 				<Sequence values="2, 5"/>
 			</Distribution>
 		</Parameter>
@@ -12,7 +12,7 @@
 		<Parameter name="dds">
 			<Query>//value[@name="dds"]</Query>
 			<Description>x</Description>
-			<Distribution apply="direct">
+			<Distribution>
 				<Sequence values="1, 2"/>
 				<!-- A2, constant -->
 			</Distribution>
@@ -21,7 +21,7 @@
 		<Parameter name="cons_dem">
 			<Query>//value[@name="cons_dem"]</Query>
 			<Description>x</Description>
-			<Distribution apply="direct">
+			<Distribution>
 				<Sequence values="1, 2"/>
 				<!-- ref, high -->
 			</Distribution>
@@ -30,7 +30,7 @@
 		<Parameter name="ccs">
 			<Query>//value[@name="ccs"]</Query>
 			<Description>x</Description>
-			<Distribution apply="direct">
+			<Distribution>
 				<Sequence values="1, 2"/>
 				<!-- ref, no -->
 			</Distribution>
@@ -39,7 +39,7 @@
 		<Parameter name="re">
 			<Query>//value[@name="re"]</Query>
 			<Description>x</Description>
-			<Distribution apply="direct">
+			<Distribution>
 				<Sequence values="1, 2"/>
 				<!-- ref, adv -->
 			</Distribution>
@@ -48,7 +48,7 @@
 		<Parameter name="bev">
 			<Query>//value[@name="bev"]</Query>
 			<Description>x</Description>
-			<Distribution apply="direct">
+			<Distribution>
 				<Sequence values="1, 2"/>
 				<!-- ref, adv -->
 			</Distribution>
@@ -57,7 +57,7 @@
 		<Parameter name="nuc_ret">
 			<Query>//value[@name="nuc_ret"]</Query>
 			<Description>x</Description>
-			<Distribution apply="direct">
+			<Distribution>
 				<Sequence values="1, 2"/>
 				<!-- ref, fast -->
 			</Distribution>
