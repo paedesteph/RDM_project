@@ -1,42 +1,91 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<scenarios name="uniqueName" defaultGroup="group"
 
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-
-       xsi:noNamespaceSchemaLocation="scenarios-schema.xsd">
 <!--
-This is for anything to be run with the 5.3 solver exe
+This file is for 5.2plus exe
 -->
 
-   	<iterator name="cap" values="USwide, state"/>
-    <iterator name="ROW" values="2020ramp, 2005linear"/>  
-    <scenarioGroup name="group" useGroupDir="0" iterator="cap,ROW">
-        <scenario name="pyref-ssp2-53solver" baseline="1">
+<scenarios name="uniqueName" defaultGroup="group"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="scenarios-schema.xsd">
+
+   	<!--iterator name="cap" values="USwide, state"/>
+    <iterator name="ROW" values="2020ramp, 2005linear"/iterator="cap,ROW">  
+    <scenarioGroup name="group" useGroupDir="0" >
+        <scenario name="60b50-{cap}-BT-ROW{ROW}-S2" baseline="1">
 					<add name="SSP">../input/policy/scenarios/pop_gdp_2.xml</add>
-					<replace name="solver">../input/policy/reference/cal_broyden_config53_relax.xml</replace>
-        </scenario>
-        <scenario name="60b50-{cap}-nobio-ROW{ROW}" iterator="cap,ROW">
-					<add name="60b50US">../input/policy/scenarios/CO2pol/60b50_{cap}.xml</add>
-					<add name="cap-ROW">../input/policy/scenarios/CO2pol/ROW_{ROW}.xml</add>
-					<delete name="bio_ceiling_constraint_state.xml"/>
-					<delete name="bio_ceiling_constraint_ROW.xml"/>
-					<delete name="bio_ceiling_mkt_global.xml"/>
-					<delete name="regional_bio_mkt"/>
-        </scenario>   
-        <scenario name="60b50-{cap}-BT-ROW{ROW}" iterator="cap,ROW">
-        	<add name="60b50US">../input/policy/scenarios/CO2pol/60b50_{cap}.xml</add>
+					<replace name="solver">../input/policy/reference/cal_broyden_config53_2015.xml</replace>
+    	    <add name="60b50US">../input/policy/scenarios/CO2pol/60b50_{cap}.xml</add>
 					<add name="cap-ROW">../input/policy/scenarios/CO2pol/ROW_{ROW}.xml</add>
         </scenario>              
-        <scenario name="60b50-{cap}-BT0.5-ROW{ROW}" iterator="cap,ROW">
-        	<add name="60b50US">../input/policy/scenarios/CO2pol/60b50_{cap}.xml</add>
-					<add name="cap-ROW">../input/policy/scenarios/CO2pol/ROW_{ROW}.xml</add>        	
+        <scenario name="60b50-{cap}-BT0.5-ROW{ROW}-S2">     	
         	<function name="multiply">tag="bio_ceiling_constraint_state.xml",xpath="//constraint",value=0.5</function>
         	<function name="multiply">tag="bio_ceiling_constraint_ROW.xml",xpath="//constraint",value=0.5</function>
-        </scenario>      
-
-        <!--scenario name="60b50-{cap}-4x2015-noROW">
-        	<function name="replaceValue">tag="bio_ceiling_constraint_state.xml",xpath="//constraint",value=24.116373246</function>
-        	<function name="replaceValue">tag="bio_ceiling_constraint_ROW.xml",xpath="//constraint",value=88.34603198</function>
-        </scenario-->   
+        </scenario> 
+        <scenario name="StateRamp-BT-ROW2020ramp-S1-profit-bind" baseline="1">
+					<add name="SSP">../input/policy/scenarios/pop_gdp_2.xml</add>
+					<replace name="solver">../input/policy/reference/cal_broyden_config53_relax.xml</replace>
+    	    <add name="60b50US-ramp">../input/policy/scenarios/CO2pol/60b50_US2020ramp.xml</add>
+					<add name="cap-ROW">../input/policy/scenarios/CO2pol/ROW_2020ramp.xml</add>
+					<add name="refining_profit">../input/policy/scenarios/en_transformation_profit_update.xml</add>		
+        </scenario-->                
+<scenarioGroup name="group" useGroupDir="0">
+        <scenario name="base" baseline="1">
+					<add name="SSP">../input/policy/scenarios/pop_gdp_5.xml</add>
+    	    <replace name="dd_usa">../input/policy/scenarios/HDDCDD_A2.xml</replace>
+    	    <add name="trn_pe_zero">../input/policy/scenarios/trn_pe_zero.xml</add>
+					<add name="trn_dem">../input/policy/scenarios/td_5_high.xml</add>
+					<add name="FLSP">../input/policy/scenarios/FLSP_5_high.xml</add>
+					<add name="noccs_st">../input/policy/scenarios/noccs_st.xml</add>
+					<add name="noccs_pt">../input/policy/scenarios/noccs_pt.xml</add>
+					<function name="multiply">tag="nuc_usa",xpath="//half-life",value=0.6</function>
+					<add name="nuc_bound">../input/policy/scenarios/nonewnuclear.xml</add>	
+					<replace name="solver">../input/policy/reference/cal_broyden_config53_relax.xml</replace>
+					<add name="60b50US-bind">../input/policy/scenarios/CO2pol/60b50_US2020ramp.xml</add>
+					<add name="cap-ROW">../input/policy/scenarios/CO2pol/ROW_2020ramp.xml</add>
+					<add name="refining_profit">../input/policy/scenarios/en_transformation_profit_update.xml</add>		
+        </scenario>              
+        <scenario name="SSP2">
+					<replace name="SSP">../input/policy/scenarios/pop_gdp_2.xml</replace>
+					<replace name="trn_pe_zero">../input/policy/scenarios/trn_pe_zero.xml</replace>
+					<replace name="trn_dem">../input/policy/scenarios/td_2_high.xml</replace>
+					<replace name="FLSP">../input/policy/scenarios/FLSP_2_high.xml</replace>
+        </scenario>   
+        <scenario name="CDD">
+    	    <replace name="dd_usa">../input/policy/scenarios/HDDCDD_constant.xml</replace>
+        </scenario>   
+        <scenario name="adv_re">
+    	    <add name="re_adv">../input/policy/scenarios/adv_re_tech.xml</add>
+        </scenario>            
+        <scenario name="ccs">
+    	    <delete name="noccs_st"/>
+    	    <delete name="noccs_pt"/>
+        </scenario>   
+        <scenario name="solver-iter">
+					<replace name="solver">../input/policy/reference/cal_broyden_config53_2015.xml</replace>
+        </scenario>    
+        <scenario name="profit_delay">
+					<replace name="refining_profit">../input/policy/scenarios/en_transformation_profit_update_2020.xml</replace>
+        </scenario> 
+       <scenario name="adv_bev">
+        <replace name="bev_UCD">../input/policy/scenarios/bev_adv_UCD.xml</replace>				
+				<insert name="bev_USA_adv" after="bev_USA">../input/policy/scenarios/bev_USA_adv.xml</insert>
+				<add name="BEV_LoBatt_compact">../input/policy/reference/BEV_LoBatt_compact_wLearning.xml</add>
+				<add name="BEV_LoBatt_large">../input/policy/reference/BEV_LoBatt_large_wLearning.xml</add>
+				<add name="BEV_LoBatt_lttruck_SUV">../input/policy/reference/BEV_LoBatt_lttruck_SUV_wLearning.xml</add>
+				<add name="BEV_LoBatt_midsize">../input/policy/reference/BEV_LoBatt_midsize_wLearning.xml</add>
+				<add name="BEV_LDV_SW">../input/policy/reference/BEV_SW_update-global.xml</add>
+			</scenario> 
+			 <scenario name="SSP2-no-cap">
+					<replace name="SSP">../input/policy/scenarios/pop_gdp_2.xml</replace>
+					<replace name="trn_pe_zero">../input/policy/scenarios/trn_pe_zero.xml</replace>
+					<replace name="trn_dem">../input/policy/scenarios/td_2_high.xml</replace>
+					<replace name="FLSP">../input/policy/scenarios/FLSP_2_high.xml</replace>
+					<delete name="60b50US-bind"/>
+    	    <delete name="cap-ROW"/>
+        </scenario>  
+        <scenario name="SSP5-no-cap">
+					<delete name="60b50US-bind"/>
+    	    <delete name="cap-ROW"/>
+        </scenario> 
     </scenarioGroup>
 </scenarios>
