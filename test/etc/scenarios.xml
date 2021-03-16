@@ -9,7 +9,7 @@
        xsi:noNamespaceSchemaLocation="scenarios-schema.xsd">
        
 <scenarioGroup name="group" useGroupDir="0">
-        <scenario name="base3" baseline="1">
+        <scenario name="base4" baseline="1">
 					<add name="SSP">../input/policy/scenarios/pop_gdp_5.xml</add>
     	    <replace name="dd_usa">../input/policy/scenarios/HDDCDD_A2.xml</replace>
     	    <add name="trn_pe_zero">../input/policy/scenarios/trn_pe_zero.xml</add>
@@ -23,7 +23,21 @@
 					<add name="60b50US2020linear">../input/policy/scenarios/CO2pol/60b50_US2020linear.xml</add>
 					<add name="cap-ROW">../input/policy/scenarios/CO2pol/ROW_2020linear.xml</add>
 					<add name="refining_profit">../input/policy/scenarios/en_transformation_profit_update.xml</add>		
-        </scenario>              
+        </scenario>
+        <scenario name="base4-2030">
+					<replace name="60b50US2020linear">../input/policy/scenarios/CO2pol/60b50_US2020linear_2030.xml</replace>
+        </scenario>      
+        <scenario name="base4-0.5bio">
+       		<function name="multiply">tag="bio_ceiling_constraint_state.xml",xpath="//constraint",value=0.5</function>
+        	<function name="multiply">tag="bio_ceiling_constraint_ROW.xml",xpath="//constraint",value=0.5</function>
+        </scenario>  
+        <scenario name="base4-2030-0.5bio">
+        	<function name="multiply">tag="bio_ceiling_constraint_state.xml",xpath="//constraint",value=0.5</function>
+        	<function name="multiply">tag="bio_ceiling_constraint_ROW.xml",xpath="//constraint",value=0.5</function>
+					<replace name="60b50US2020linear">../input/policy/scenarios/CO2pol/60b50_US2020linear_2030.xml</replace>
+        </scenario>    
+        <scenario name="base5">
+        </scenario>         
         <scenario name="SSP2">
 					<replace name="SSP">../input/policy/scenarios/pop_gdp_2.xml</replace>
         </scenario>   

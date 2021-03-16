@@ -67,7 +67,7 @@ This file is for 5.2plus exe
 					<replace name="refining_profit">../input/policy/scenarios/en_transformation_profit_update_2020.xml</replace>
         </scenario> 
        <scenario name="adv_bev">
-        <replace name="bev_UCD">../input/policy/scenarios/bev_adv_UCD.xml</replace>				
+        <replace name="bev_UCD">../input/policy/scenarios/bev_UCD_adv.xml</replace>				
 				<insert name="bev_USA_adv" after="bev_USA">../input/policy/scenarios/bev_USA_adv.xml</insert>
 				<add name="BEV_LoBatt_compact">../input/policy/reference/BEV_LoBatt_compact_wLearning.xml</add>
 				<add name="BEV_LoBatt_large">../input/policy/reference/BEV_LoBatt_large_wLearning.xml</add>
