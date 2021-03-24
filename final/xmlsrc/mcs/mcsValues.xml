@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<scenario xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="../../../../../../github/pygcam/pygcam/etc/mcsValues-schema.xsd">
+	<world>
+		<!-- This file provides placeholders for the "runsim" sub=command to store trial values.
+		     The file is copied into place by the "gensim" sub-command, and the zero values are
+		     replaced by runsim with values taken from trialData.csv. The values are used by the
+		     "writeFuncs"
+		  -->
+		<region name="global">
+			<values>
+				<value name="pop">0</value>
+				<value name="dds">0</value>
+				<value name="cons_dem">0</value>
+				<value name="ccs">0</value>
+				<value name="re">0</value>
+				<value name="bev">0</value>
+				<value name="nuc_ret">0</value>
+			</values>
+		</region>
+	</world>
+</scenario>

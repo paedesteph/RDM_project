@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ResultList>
+
+    <Result name="delta-total-forcing" type="diff"
+            desc="The change in total forcing between scenarios by timestep (W/m2)">
+        <File name="Climate_forcing"/>
+    </Result>
+
+    <Result name="delta-total-forcing-2050" type="diff"
+            desc="The change in total forcing in 2050 between scenarios (W/m2)">
+        <File name="Climate_forcing"/>
+        <Column name="2050"/>
+    </Result>
+
+</ResultList>

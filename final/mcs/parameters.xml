@@ -1,66 +1,84 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ParameterList xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="/Users/rjp/github/pygcam/pygcam/mcs/etc/parameter-schema.xsd">
-	<InputFile name="../local-xml/base/mcsValues.xml">
-		<Parameter name="population">
-			<Query>//value[@name="population"]</Query>
+
+<ParameterList xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+							 xsi:noNamespaceSchemaLocation="../../final/mcs/parameter-schema.xsd">
+
+	<InputFile name="../local-xml/mcs/mcsValues.xml">
+
+		<Parameter name="pop">
+			<Query>//value[@name="pop"]</Query>
 			<Description>x</Description>
 			<Distribution>
 				<Sequence values="2, 5"/>
 			</Distribution>
 		</Parameter>
-		
+
 		<Parameter name="dds">
 			<Query>//value[@name="dds"]</Query>
 			<Description>x</Description>
 			<Distribution>
-				<Sequence values="1, 2"/>
+				<Sequence values="0, 1"/>
 				<!-- A2, constant -->
 			</Distribution>
 		</Parameter>
-		
+
 		<Parameter name="cons_dem">
 			<Query>//value[@name="cons_dem"]</Query>
 			<Description>x</Description>
 			<Distribution>
-				<Sequence values="1, 2"/>
+				<Sequence values="0, 1"/>
 				<!-- ref, high -->
 			</Distribution>
 		</Parameter>
-		
+
 		<Parameter name="ccs">
 			<Query>//value[@name="ccs"]</Query>
 			<Description>x</Description>
 			<Distribution>
-				<Sequence values="1, 2"/>
+				<Sequence values="0, 1"/>
 				<!-- ref, no -->
 			</Distribution>
 		</Parameter>
-		
+
 		<Parameter name="re">
 			<Query>//value[@name="re"]</Query>
 			<Description>x</Description>
 			<Distribution>
-				<Sequence values="1, 2"/>
+				<Sequence values="0, 1"/>
 				<!-- ref, adv -->
 			</Distribution>
 		</Parameter>
-		
+
 		<Parameter name="bev">
 			<Query>//value[@name="bev"]</Query>
 			<Description>x</Description>
 			<Distribution>
-				<Sequence values="1, 2"/>
+				<Sequence values="0, 1"/>
 				<!-- ref, adv -->
 			</Distribution>
 		</Parameter>
-		
+
+	</InputFile>
+
+
+	<InputFile name="nuc_usa">
 		<Parameter name="nuc_ret">
-			<Query>//value[@name="nuc_ret"]</Query>
-			<Description>x</Description>
-			<Distribution>
-				<Sequence values="1, 2"/>
-				<!-- ref, fast -->
+			<Query>//half-life</Query>
+			<Distribution apply="multiply">
+				<Sequence values="0.6, 1"/>	<!-- fast, ref -->
 			</Distribution>
 		</Parameter>
+	</InputFile>
+
+
+	<InputFile name="solver">
+		<!--
+		  InputFiles are processed in order, so this will be called after
+			mcsValues.xml is updated with per-trial values.
+
+			We reference "solver" here, but any tag certain to be in the config file
+			would serve our purpose equally well. We're just registering the function.
+		-->
+    <WriteFunc>writeFuncs.createScenario</WriteFunc>
 	</InputFile>
 </ParameterList>
